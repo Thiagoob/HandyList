@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="customer"
+            type="com.celerocommerce.handylist.models.Customer" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/globalCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/customer_item_is_handled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check_green_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/customer_item_profile_picture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp"
+                app:layout_constraintBottom_toTopOf="@id/customer_item_info_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+
+            <LinearLayout
+                android:id="@+id/customer_item_info_container"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/customer_item_profile_picture">
+
+                <TextView
+                    android:id="@+id/customer_item_name"
+                    style="@style/PrimaryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{customer.name}"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/customer_item_service_reason"
+                    style="@style/SecondaryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{customer.serviceReason}"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/customer_item_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{customer.phoneNumber}"
+                    android:textAlignment="center"
+                    android:textColor="@color/grey5"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/customer_item_address_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/customer_item_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_weight="9"
+                        android:gravity="center_vertical|start"
+                        android:maxLines="1"
+                        android:text="@{@string/address(customer.location.address.street, customer.location.address.city, customer.location.address.state)}"
+                        android:textColor="@color/grey5"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/customer_item_address_country"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical|end"
+                        android:text="@{customer.location.address.country}"
+                        android:textColor="@color/grey5"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

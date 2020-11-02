@@ -1,0 +1,130 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion buildToolsVersion
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.celerocommerce.handylist"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.kotlin.stdlib
+    implementation deps.appcompat
+    implementation deps.core_ktx
+    implementation deps.constraint_layout
+
+    implementation deps.activity.runtime_ktx
+    implementation deps.card_view
+    implementation deps.circle_image_view
+    implementation deps.coroutines.android
+    implementation deps.coroutines.core
+    implementation deps.dagger_hilt.android
+    implementation deps.dagger_hilt.androidx.viewmodel
+    implementation deps.datastore.preferences
+    implementation deps.fragment.runtime_ktx
+    implementation deps.glide.runtime
+    implementation (deps.glide.recyclerview_integration) {
+        transitive = false
+    }
+    implementation deps.lifecycle.java8
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.runtime_ktx
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.material
+    implementation deps.material_dialogs.core
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.ui_ktx
+    implementation deps.paging.runtime
+    implementation deps.recyclerview.runtime
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    implementation deps.swiperefreshlayout
+    implementation deps.timber
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    kapt deps.dagger_hilt.compiler
+    kapt deps.dagger_hilt.androidx.compiler
+    kapt deps.glide.compiler
+    kapt deps.room.compiler
+
+    androidTestImplementation deps.arch_core.testing
+    androidTestImplementation deps.atsl.core
+    androidTestImplementation deps.atsl.ext_junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+
+    androidTestImplementation deps.dagger_hilt.testing
+    androidTestImplementation deps.junit
+    androidTestImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.android
+    androidTestImplementation deps.retrofit.mock
+
+    androidTestImplementation deps.espresso.core
+
+    kaptAndroidTest deps.dagger_hilt.compiler
+
+    testImplementation deps.arch_core.testing
+    testImplementation deps.dagger_hilt.testing
+    testImplementation deps.junit_jupiter.api
+    testImplementation deps.junit_jupiter.params
+    testImplementation deps.retrofit.mock
+    testImplementation deps.robolectric
+    testImplementation deps.mockito.core
+
+    kaptTest deps.dagger_hilt.compiler
+
+    testRuntimeOnly deps.junit_jupiter.engine
+
+    debugImplementation deps.leakcanary
+}

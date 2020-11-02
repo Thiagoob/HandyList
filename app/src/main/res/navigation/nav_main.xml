@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/customerFragment">
+
+    <fragment
+        android:id="@+id/customerFragment"
+        android:name="com.celerocommerce.handylist.ui.main.customer.CustomerFragment"
+        android:label="@string/customer_fragment_title"
+        tools:layout="@layout/fragment_customer">
+        <action
+            android:id="@+id/action_customerFragment_to_viewCustomerFragment"
+            app:destination="@id/viewCustomerFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewCustomerFragment"
+        android:name="com.celerocommerce.handylist.ui.main.customer.ViewCustomerFragment"
+        android:label="{customerName}">
+        <argument
+            android:name="customerName"
+            app:argType="string" />
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="profilePictureTransition"
+            app:argType="string" />
+        <argument
+            android:name="nameTransition"
+            app:argType="string" />
+        <argument
+            android:name="problemTransition"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="customer"
+            type="com.celerocommerce.handylist.models.Customer" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:context=".ui.main.customer.ViewCustomerFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_customer_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/celeroAccent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.46"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/customer_view_profile_picture"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="60dp"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/customer_view_customer_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/customer_view_customer_name"
+                style="@style/PrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{customer.name}"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/customer_view_service_reason"
+                app:layout_constraintEnd_toEndOf="@+id/customer_view_profile_picture"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/customer_view_profile_picture"
+                app:layout_constraintTop_toBottomOf="@+id/customer_view_profile_picture" />
+
+            <TextView
+                android:id="@+id/customer_view_service_reason"
+                style="@style/PrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{customer.serviceReason}"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/customer_view_problem_image_recycler_view"
+                app:layout_constraintEnd_toEndOf="@+id/customer_view_customer_name"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/customer_view_customer_name"
+                app:layout_constraintTop_toBottomOf="@+id/customer_view_customer_name" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/customer_view_problem_image_recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:fadeScrollbars="false"
+                android:orientation="horizontal"
+                android:scrollbarStyle="outsideInset"
+                android:scrollbars="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/customer_view_information_include"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customer_view_service_reason" />
+
+            <include
+                android:id="@+id/customer_view_information_include"
+                layout="@layout/layout_customer_information"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/customer_view_handled_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customer_view_problem_image_recycler_view">
+
+            </include>
+
+            <Button
+                android:id="@+id/customer_view_handled_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:drawableEnd="@drawable/ic_check_green_24dp"
+                android:text="@string/handled"
+                android:textColor="@color/celeroAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/guideline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/customer_view_profile_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/customer_view_profile_picture" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

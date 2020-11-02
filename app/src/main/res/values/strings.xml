@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">HandyList</string>
+
+    <string name="customer_fragment_title">Daily Customers</string>
+
+    <string name="customer_key_saved_state">com.celerocommerce.handylist.ui.main.customer.currentCustomer</string>
+
+    <string name="text_error">Error</string>
+    <string name="text_success">Success</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="network_error_response">Error</string>
+
+    <string name="profile_pic_transition">image%d</string>
+    <string name="name_transition">name%d</string>
+    <string name="problem_transition">problem%d</string>
+
+    <string name="address">%s, %s, %s</string>
+    <string name="customer_information_label">Customer information</string>
+    <string name="phone_number">Phone number: %s</string>
+    <string name="address_label">Address</string>
+    <string name="street">Street: %s</string>
+    <string name="city">City: %s</string>
+    <string name="state">State: %s</string>
+    <string name="country">Country: %s</string>
+    <string name="get_directions">Get Directions</string>
+    <string name="handled">Handled</string>
+
+</resources>
